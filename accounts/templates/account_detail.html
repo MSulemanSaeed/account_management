@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Detail - {{ account.name }}</title>
+</head>
+<body>
+    <h1>{{ account.name }}</h1>
+    <p>Balance: ${{ account.balance }}</p>
+    <p>Total Amount: ${{ account.total_amount }}</p>
+    <h2>Transactions</h2>
+    <ul>
+        {% for transaction in transactions %}
+            <li>{{ transaction }}</li>
+        {% empty %}
+            <li>No transactions found.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_transaction' %}">Create Transaction</a>
+</body>
+</html>

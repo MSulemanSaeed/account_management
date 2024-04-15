@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Financial Management System - Accounts</title>
+</head>
+<body>
+    <h1>Accounts</h1>
+    <ul>
+        {% for account in accounts %}
+            <li><a href="{% url 'account_detail' account.id %}">{{ account.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
