@@ -13,8 +13,8 @@ class Account(models.Model):
         return self.balance
 
 class Transaction(models.Model):
-    DEBIT = 'debit'
-    CREDIT = 'credit'
+    DEBIT = 'd'
+    CREDIT = 'c'
     TRANSACTION_TYPES = [
         (DEBIT, 'Debit'),
         (CREDIT, 'Credit'),
@@ -22,8 +22,8 @@ class Transaction(models.Model):
 
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=15, decimal_places=2)
-    transaction_type = models.CharField(max_length=6, choices=TRANSACTION_TYPES)
-    description = models.TextField(blank=True, null=True)  # New field for description
+    transaction_type = models.CharField(max_length=1, choices=TRANSACTION_TYPES)
+    description = models.TextField(blank=True, null=True)  
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def clean(self):
